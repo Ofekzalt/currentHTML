@@ -1,0 +1,177 @@
+[
+    {
+        "id": 1,
+        "name": "Air Jordan 1 Retro Tie Dye",
+        "price": "115$",
+        "image": "ProductsImg/img1.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+       
+        "id": 2,
+        "name": "Air Jordan 4 Tech White (White Oreo)",
+        "price": "115$",
+        "image": "ProductsImg/img2.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+       
+        "id":3,
+        "name": "Air Jordan 4 Black Cat",
+        "price": "115$",
+        "image": "ProductsImg/img3.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":4,
+        "name": "Air Jordan 4 Military Black",
+        "price": "115$",
+        "image": "ProductsImg/img4.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+       
+        "id":5,
+        "name": "Air Jordan 1 High Dark Mocha",
+        "price": "100$",
+        "image": "ProductsImg/img5.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":6,
+        "name": "Air Jordan 4 Retro University Blue",
+        "price": "115$",
+        "image": "ProductsImg/img6.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":7,
+        "name": "Air Jordan 1 High University Blue",
+        "price": "115$",
+        "image": "ProductsImg/img7.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":8,
+        "name": "Air Jordan 1 Retro High Og Panda",
+        "price": "100$",
+        "image": "ProductsImg/img8.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":9,
+        "name": "Air Jordan 1 Low Wolf Grey",
+        "price": " 100$",
+        "image": "ProductsImg/img9.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":10,
+        "name": "Air Jordan 1 Low Light Smoke Gray",
+        "price": "150$",
+        "image": "ProductsImg/img10.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":11,
+        "name": "Air Jordan 1 Mid Light Smoke Grey (2022)",
+        "price": "105$",
+        "image": "ProductsImg/img11.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":12,
+        "name": "Air Jordan 1 Mid Dutch Green",
+        "price": "100$",
+        "image": "ProductsImg/img12.png",
+        "category": "featured",
+        "brand": "JORDAN"
+    },
+
+    {
+        "id":13,
+        "name": "Air Jordan 1 Low All Star 2021",
+        "price": "100$",
+        "image": "ProductsImg/img13.png",
+        "category": "new-arrival",
+        "brand": "JORDAN"
+    },
+    {
+       "id":14,
+        "name": "Air Jordan 1 Mid Wolf Grey",
+        "price": "100$",
+        "image": "ProductsImg/img14.png",
+        "category": "new-arrival",
+        "brand": "JORDAN"
+    },
+    {
+        "id":15,
+        "name": "Air Jordan 1 Mid Chicago Black Toe",
+        "price": "100$",
+        "image": "ProductsImg/img15.png",
+        "category": "new-arrival",
+        "brand": "JORDAN"
+    },
+    {
+        "id":16,
+        "name": "Air Jordan 1 Mid Gym Red Black White",
+        "price": "100$",
+        "image": "ProductsImg/img16.png",
+        "category": "new-arrival",
+        "brand": "JORDAN"
+    },
+    {
+       "id":17,
+        "name": "Air Jordan 1 Mid Barely Orange",
+        "price": "100$",
+        "image": "ProductsImg/img17.png",
+        "category": "new-arrival",
+        "brand": "JORDAN"
+    },
+    {
+        "id":18,
+        "name": "Air Jordan 4 Retro Levi’s White",
+        "price": "100$",
+        "image": "ProductsImg/img18.png",
+        "category": "new-arrival",
+        "brand": "JORDAN"
+    },
+    {
+        "id":19,
+        "name": "Air Jordan 4 Retro Metallic Purple",
+        "price": "100$",
+        "image": "ProductsImg/img19.png",
+        "category": "new-arrival",
+        "brand": "JORDAN"
+    },
+    {
+        "id":20,
+        "name": "Air Jordan 4 Infrared (2022)",
+        "price": "100$",
+        "image": "ProductsImg/img20.png",
+        "category": "new-arrival",
+        "brand": "JORDAN"
+    }
+]

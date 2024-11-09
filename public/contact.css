@@ -1,0 +1,99 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    /* margin: 20px; */
+    padding: 0px;
+    background: linear-gradient(135deg, #7d2828, #c15757);
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+
+
+
+main {
+    padding: 20px;
+}
+
+.contact-info, .contact-form, .map {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.contact-info h2, .contact-form h2 {
+    color: #c62828; /* Title color */
+}
+
+.contact-info .info p {
+    margin: 10px 0;
+}
+
+.contact-info ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.contact-info ul li {
+    margin: 10px 0;
+}
+
+.contact-info i {
+    color: #c62828; /* Icon color */
+}
+
+.contact-form label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+.contact-form input, .contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.contact-form button {
+    background-color: #c62828; /* Button color */
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.contact-form button:hover {
+    background-color: #ff8a65; /* Button hover color */
+}
+
+.map {
+    text-align: center;
+}
+
+.whatsapp-button {
+    background-color: #25D366; /* WhatsApp background color */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.whatsapp-button i {
+    margin-right: 8px; /* Space for icon */
+}
+
+.whatsapp-button:hover {
+    background-color: #1ebe57; /* Darker hover color */
+}

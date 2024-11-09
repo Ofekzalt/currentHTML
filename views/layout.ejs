@@ -1,0 +1,50 @@
+<!-- views/layout.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><%= title %> | Your Shopping Site</title>
+    <!-- Consolidated CSS Links -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/css_frontpage/default.css">
+    <link rel="stylesheet" href="/css_frontpage/header.css">
+    <link rel="stylesheet" href="/css_frontpage/featured.css">
+    <link rel="stylesheet" href="/css_frontpage/banner.css">
+    <link rel="stylesheet" href="/css_frontpage/testimonalbrands.css">
+    <link rel="stylesheet" href="/css_frontpage/footer.css">
+    <link rel="stylesheet" href="/css_frontpage/s-banner.css">
+    <link rel="stylesheet" href="/css_frontpage/homepage.css">
+    <link rel="stylesheet" href="/css_frontpage/cards.css">
+    <link rel="stylesheet" href="/css_frontpage/newletter.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/homepage.css">
+    
+    <!-- Page-Specific Styles -->
+    <% if (typeof pageStyles !== 'undefined') { %>
+        <%- pageStyles %>
+    <% } %>
+</head>
+
+<body>
+    <!-- Include Header -->
+    <%- include('partials/header') %>
+
+    <!-- Main Content -->
+    <main>
+        <%- body %>
+    </main>
+
+    <!-- Include Footer -->
+    <%- include('partials/footer') %>
+
+    <!-- Global Scripts -->
+    <script src="/js_frontpage/global.js"></script>
+    <!-- Add other global scripts here -->
+
+    <!-- Page-Specific Scripts -->
+    <% if (typeof pageScripts !== 'undefined') { %>
+        <%- pageScripts %>
+    <% } %>
+</body>
+</html>

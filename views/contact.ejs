@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us</title>
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+</head>
+<body>
+   
+
+        <section class="contact-info">
+            <h2>Get in Touch</h2>
+            <p>If you have any questions or inquiries, feel free to reach out to us!</p>
+            <div class="info">
+                <p><i class="fas fa-envelope"></i> Email: <a href="mailto:support@jordanshoes.com">support@jordanshoes.com</a></p>
+                <p><i class="fas fa-phone"></i> Phone: <a href="tel:+972509290764">+972 50 929 0764</a></p>
+            </div>
+            <button class="whatsapp-button" onclick="openWhatsApp()">
+                <i class="fab fa-whatsapp"></i> שלח הודעה בווצאפ
+            </button>
+        </section>
+
+        <section class="contact-form">
+            <h2>Contact Form</h2>
+            <form action="#" method="post">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+                
+                <button type="submit">Send Message</button>
+            </form>
+        </section>
+
+        <section class="map">
+            <h2>Our Location</h2>
+            <!-- הוספת מפה באמצעות iframe -->
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3382.0260164920956!2d34.75713707514064!3d32.04148722121206!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x151d4cb3b705472b%3A0x96070c30626aecf1!2sBe&#39;er%20Sheva%20St%2016%2C%20Tel%20Aviv-Jaffa%2C%20Israel!5e0!3m2!1sen!2sus!4v1730828249700!5m2!1sen!2sus" width="600" height="450"   referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </section>
+
+
+    <!-- טעינת קובץ JavaScript -->
+    <script src="contact.js"></script>
+</body>
+</html>

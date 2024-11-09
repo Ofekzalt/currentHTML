@@ -1,0 +1,62 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #a71313, #f46f6f);
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #5e0010; /* Jordan Red */
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+/* Main Styles */
+main {
+    padding: 20px;
+}
+
+/* Container for Chart and Description */
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+/* Chart Container */
+.chart-container {
+    flex: 1;
+    max-width: 50%; /* Limiting the width */
+    padding-right: 20px; /* Spacing between chart and description */
+}
+
+/* Description Container */
+.description-container {
+    flex: 1;
+    max-width: 50%; /* Limiting the width */
+}
+
+/* Description Styles */
+.description-container h2 {
+    color: #780014; /* Jordan Red */
+    margin-bottom: 15px;
+}
+
+.description-container ul {
+    list-style-type: none; /* Remove bullets */
+    padding: 0;
+}
+
+.description-container li {
+    margin-bottom: 10px; /* Space between list items */
+}

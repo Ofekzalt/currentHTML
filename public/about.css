@@ -1,0 +1,100 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body Styles */
+body {
+    font-family: "Open Sans", sans-serif;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #7d2828, #712b2b);
+    color: #333;
+}
+
+/* Header Styles */
+header {
+    background-color: #770216; /* Jordan Red */
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Increased shadow for depth */
+    border-bottom: 4px solid #780014; /* Stronger bottom border */
+}
+
+header h1 {
+    margin-bottom: 15px; /* Space between title and nav */
+    font-size: 2.5em; /* Increased font size for the title */
+}
+
+header nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+header nav ul li {
+    display: inline-block; /* Change to inline-block for better alignment */
+    margin: 0 15px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold; /* Bold links for emphasis */
+    padding: 10px 20px; /* Increased padding for a more button-like feel */
+    border-radius: 25px; /* Rounded link buttons */
+
+}
+
+header nav ul li a:hover {
+    background: rgba(255, 255, 255, 0.2); /* Light hover effect */
+    transform: scale(1.05); /* Slight scale effect on hover */
+}
+
+/* Main Section Styles */
+main {
+    padding: 20px;
+    max-width: 800px;
+    margin: 40px auto; /* Added top margin for spacing */
+    background: white; /* White background for main content */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Increased shadow for depth */
+}
+
+/* Section Styles */
+section {
+    margin-bottom: 40px;
+}
+
+h2 {
+    color: #780014; /* Jordan Red */
+    margin-bottom: 10px;
+    border-bottom: 2px solid #780014; /* Underline for headings */
+    padding-bottom: 5px; /* Space between text and underline */
+    font-size: 1.8em; /* Increased heading size */
+}
+
+.content {
+    display: flex;
+    align-items: flex-start; /* Align images and text at the start */
+    margin-bottom: 20px; /* Space between content sections */
+}
+.desginfoot{
+    background-color: aliceblue;
+}
+
+.content img {
+    width: 150px; /* Fixed size for images */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between image and text */
+    border-radius: 8px; /* Rounded corners for images */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow on images */
+}
+
+.red-line {
+    border: none; /* Remove default border */
+    height: 2px; /* Thickness of the line */
+    background-color: #780014; /* Jordan Red */
+    margin: 20px 0; /* Spacing above and below the line */
+}

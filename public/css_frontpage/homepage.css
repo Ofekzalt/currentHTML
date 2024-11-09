@@ -1,0 +1,60 @@
+#secoundpart{
+    background-image: url("/Public/img/home.webp");
+    height:90vh;
+    width: 100%;
+    background-size: cover;
+    background-position: top 25% right 0;
+    padding: 0 80px; 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+#secoundpart h4 {
+    padding-bottom: 15px;
+    color: rgb(255, 255, 255);
+}
+#secoundpart h1 {
+    color: rgb(255, 255, 255);
+}
+#secoundpart h2{
+    color: rgb(255, 255, 255);
+}
+#secoundpart p{
+    color: rgb(255, 255, 255);
+}
+#secoundpart button {
+    background-color: rgb(255, 255, 255);
+    color: rgb(171, 0, 0);
+    border: 0;
+    padding: 14px 60px 14px 50px;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 15px;
+}
+
+.pro-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.pro {
+    flex: 1 1 calc(25% - 20px); /* מתאים ל-4 מוצרים בשורה */
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.pro img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+

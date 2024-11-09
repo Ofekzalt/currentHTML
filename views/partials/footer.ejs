@@ -1,0 +1,84 @@
+<!-- views/partials/footer.ejs -->
+
+<footer class="footer" id="footer">
+    <div class="footer-container">
+        <div class="col">
+            <img class="logo" src="/img/logo.png" alt="Logo">
+            <h4>Contact</h4>
+            <p><strong>Address:</strong> Beer Sheva 16, Yafo, Tel-Aviv</p>
+            <p><strong>Phone:</strong> +972 50 929 0764</p>
+            <p><strong>Hours:</strong> Open 24/7</p>
+            <div class="follow">
+                <h4>Follow Us</h4>
+                <ul class="wrapper">
+                    <li class="icon facebook">
+                      <span><i class="fab fa-facebook-f"></i></span>
+                    </li>
+                    <li class="icon youtube">
+                      <span><i class="fab fa-youtube"></i></span>
+                    </li>
+                    <li class="icon tiktok">
+                      <span><i class="fab fa-tiktok"></i></span>
+                    </li>
+                    <li class="icon instagram">
+                      <span><i class="fab fa-instagram"></i></span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col">
+            <h4>About</h4>
+            <a href="/about">About Us</a>
+            <br><a href="#">Privacy Policy</a>
+            <br><a href="#">Terms & Conditions</a>
+            <br><a href="#">Contact Us</a>
+        </div>
+        <div class="col">
+            <h4>My Account</h4>
+            <% if(user){ %>
+                <a href="/cart">View Cart</a>
+                <br><a href="/wishlist">My Wishlist</a>
+                <br><a href="/help">Help</a>
+            <% } else { %>
+                <a href="/login">Sign In</a>
+                <br><a href="/register">Register</a>
+                <br><a href="/cart">View Cart</a>
+                <br><a href="/wishlist">My Wishlist</a>
+                <br><a href="/help">Help</a>
+            <% } %>
+        </div>
+        <div class="col install">
+            <h4>Install App</h4>
+            <p>Available on AppStore or GooglePlay</p>
+            <div class="row">
+                <a href="https://www.apple.com/app-store/">
+                    <img src="/img/appstore.png" alt="App Store" style="width:200px; height: 60px;">
+                </a>
+                <a href="https://play.google.com/store">
+                    <img src="/img/googleplay.png" alt="Google Play" style="padding-left: 5px; width:200px; height: 60px;">
+                </a>
+            </div>
+            <p>Secure Payment Gateways</p>
+            <img src="/img/pay.jpg" alt="Payment Methods" style="width:370px; height: 100px;">
+        </div>
+    </div>
+    <div class="copyright">
+        <p>© 2024 Tech2 - HTML and CSS Template</p>
+    </div>
+</footer>
+
+<!-- JavaScript Files -->
+<script src="/js_frontpage/script.js"></script> 
+<script src="/js_frontpage/index.js"></script>
+
+<script>
+    // Hide the footer on 'login' and 'register' pages
+    document.addEventListener("DOMContentLoaded", () => {
+        const footer = document.getElementById('footer');
+        if (window.location.pathname.includes('login') || window.location.pathname.includes('register')) {
+            footer.style.display = 'none';
+        } else {
+            footer.style.display = 'flex';
+        }
+    });
+</script>

@@ -1,0 +1,41 @@
+#newletter{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    align-items: center;
+    background: radial-gradient(circle, #be1000, #610000);
+    box-sizing: border-box;
+}
+#newletter h4{
+    font-size: 22px;
+    font-weight: 700;
+    color:aliceblue;
+    text-decoration: none; 
+}
+#newletter p{
+    font-size: 14px;
+    font-weight: 600;
+    color:rgb(255, 255, 255);
+    text-decoration: none; 
+}
+#newletter button {
+        background-color: #590c05; /* Soft coral color */
+        color: white; /* Text color */
+        border: none; /* Remove default border */
+        border-radius: 25px; /* Rounded edges */
+        padding: 10px 20px; /* Vertical and horizontal padding */
+        font-size: 16px; /* Font size */
+        font-weight: bold; /* Bold text */
+        cursor: pointer; /* Change cursor on hover */
+        transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effects */
+    }
+    
+    #newletter button:hover {
+        background-color: #ffffff; 
+        transform: translateY(-4px); 
+        color:#590c05
+    }
+    
+    #newletter button:active {
+        transform: translateY(4px); 
+    }

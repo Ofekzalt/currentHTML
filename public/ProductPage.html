@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דף מוצר</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="css frontpage/default.css">
+    <link rel="stylesheet" href="css frontpage/header.css">
+    <link rel="stylesheet" href="css frontpage/footer.css">
+ <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><link rel="stylesheet" href="css/homepage.css">
+
+</head>
+<body>
+    <section id="header">
+        <a href="#"><img src="img\logo.png" class="logo" alt=""></a>
+   
+        <div>
+          <ul id="navbar">
+            <li><a class="active" href ="index.html">Home</a></li>
+            <li><a href ="login.html">LogIn</a></li>
+            <li><a href ="about.html">About</a></li>
+            <li><a href ="contact.html">Contact</a></li>
+           
+            <li><a href="cart.html"><img src="img/shopping.png" alt="Cart" class="shopping"></a></li>
+          </ul>
+        </div>
+       
+    </section>
+
+    <main>
+        <div class="container">
+            <!-- מלבן המידע של המוצר -->
+            <div class="box">
+                <h1 id="product-name">שם המוצר</h1>
+                <p id="product-price">מחיר המוצר</p>
+                <button class="Add-Cart">Add to Cart</button>
+                <label for="product-size"><b>Select Size:</b></label>
+                <select id="product-size"></select>
+            </div>
+
+            <!-- תמונת המוצר -->
+            <figure>
+                <img id="product-image" src="Product-image.jpg" alt="Product Image" width="200">
+                <p id="product-caption">Image of the product</p>
+            </figure>
+        </div>
+    </main>
+
+
+
+    <section class="product-details">
+        <div class="tabs">
+            <button class="tab active" onclick="showTab('description')">תיאור</button>
+            <button class="tab" onclick="showTab('brand')">על המותג</button>
+            <button class="tab" onclick="showTab('shipping')">משלוחים</button>
+        </div>
+        <div id="description" class="tab-content active">
+            <p>להיות אייקון בסביבה שלך זה קל עם נעלי סניקרס </p>
+            <p>צבע כחול מהפנט בעיצוב רטרו שלא מותיר מקום לספק בסטייל שלך</p>
+           <p><strong>סולייה ספוגית פנימית וחיצונית מגומי</strong></p>
+           <p>שלטו במגרש עם הנעל הכי מטריפה בשוק</p>
+        </div>
+        <div id="brand" class="tab-content">
+            <p>היישר מאמריקה אלינו, הדגם החם ביותר ,מהרו לקנות המלאי מוגבל </p>
+             <p>מאה אחוז מקורי</p>
+            <p><strong>דגם השקה**</strong></p>
+            <p>הרכב בד: עור / סינתטי</p>
+        </div>
+        <div id="shipping" class="tab-content">
+            <p>לאור המצב הבטחוני במדינה ייתכנו עיכובים באספקת המשלוחים</p>
+            <p>משלוחים יסופקו תוך 4 ימי עסקים עד לבית הלקוח במרבית האזורים </p>
+           <p><strong>זמן אספקה ממוצע עם שליח - עד 4 ימי עסקים</strong></p>
+           <p>החזרות חינם עם שליח עד הבית ובסניפי הרשת</p>
+        </div>
+    </section>
+    <script src="script.js"></script>
+    <script src="product detail.js"></script>
+
+</body>
+    <section>
+        <footer class="footer">
+            <div class="footer-container">
+                <div class="col">
+                    <img class="logo" src="img/logo.png" alt="Logo">
+                    <h4>Contact</h4>
+                    <p><strong>Address:</strong> Beer Sheva 16, Yafo, Tel-Aviv</p>
+                    <p><strong>Phone:</strong> +972 50 929 0764</p>
+                    <p><strong>Hours:</strong> Open 24/7</p>
+                    <div class="follow">
+                        <h4>Follow Us</h4>
+                        <ul class="wrapper">
+                            <li class="icon facebook">
+                              <span><i class="fab fa-facebook-f"></i></span>
+                            </li>
+                            <li class="icon youtube">
+                              <span><i class="fab fa-youtube"></i></span>
+                            </li>
+                            <li class="icon tiktok">
+                              <span><i class="fab fa-tiktok"></i></span>
+                            </li>
+                            <li class="icon instagram">
+                              <span><i class="fab fa-instagram"></i></span>
+                            </li>
+                          </ul>
+                    </div>
+                </div>
+                <div class="col">
+                    <h4>About</h4>
+                    <a href="about.html">About Us</a>
+                    <br><a href="#">Privacy Policy</a>
+                    <br> <a href="#">Terms & Conditions</a>
+                    <br><a href="#">Contact Us</a>
+                </div>
+                <div class="col">
+                    <h4>My Account</h4>
+                    <a href="#">Sign In</a>
+                    <br><a href="#">View Cart</a>
+                    <br><a href="#">My Wishlist</a>
+                    <br> <a href="#">Help</a>
+                </div>
+                <div class="col install">
+                    <h4>Install App</h4>
+                    <p>Available on AppStore or GooglePlay</p>
+                    <div class="row">
+                        <img src="/public/img/appstore.png" alt="App Store" style="width:200px; height: 60px;">
+                        <img src="/Public/img/googleplay.png" alt="Google Play" style="padding-left: 5px; width:200px; height: 60px;">
+                    </div>
+                    <p>Secure Payment Gateways</p>
+                    <img src="/Public/img/pay.jpg" alt="Payment Methods" style="width:370px; height: 100px;">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2024 Tech2 - HTML and CSS Template</p>
+            </div>
+        </footer>
+        
+ 
+</html>
