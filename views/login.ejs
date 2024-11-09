@@ -1,5 +1,6 @@
 <!-- views/login.ejs -->
 
+<%- include('partials/header') %>
 
 <h1>Login</h1>
 <form action="/api/auth/login" method="POST">
@@ -15,8 +16,3 @@
   
   <button type="submit">Login</button>
 </form>
-
-<!-- Footer might also be included here, leading to duplication -->
-<%- include('partials/footer') %>
-
-
