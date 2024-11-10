@@ -1,6 +1,10 @@
+const checkOutButton = document.getElementById('checkout-button');
+
+
 function displayCartItems() {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     const cartContainer = document.getElementById("cart-items");
+    
     cartContainer.innerHTML = "";
 
     cartItems.forEach(item => {
@@ -46,7 +50,7 @@ function updateQuantity(id, amount) {
 function updateTotalPrice() {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     const totalPrice = cartItems.reduce((total, item) => total + (parseFloat(item.price.replace('₪', '')) * item.quantity), 0);
-    document.getElementById('total-price').innerText = `₪${totalPrice.toFixed(2)}`;
+    document.getElementById('total-price').innerText = `$${ totalPrice.toFixed(2)}`;
 }
 
 // פונקציה להסרת פריט מהעגלה
@@ -56,6 +60,18 @@ function removeItemFromCart(id) {
     localStorage.setItem('cart', JSON.stringify(cartItems));
     displayCartItems();
 }
+
+checkOutButton.addEventListener('click', () => {
+    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    console.log(cartItems.length);
+
+    if(cartItems.length === 0){
+        alert("No items in cart");
+    }else{
+        alert("Thank you for buying from us!");
+    }
+});
+
 
 // אתחול תצוגת העגלה בעת טעינת הדף
 window.onload = displayCartItems;

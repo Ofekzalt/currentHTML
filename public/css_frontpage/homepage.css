@@ -1,5 +1,5 @@
 #secoundpart{
-    background-image: url("/Public/img/home.webp");
+    background-image: url("/img/backgroundlogin.jpg");
     height:90vh;
     width: 100%;
     background-size: cover;
@@ -42,7 +42,7 @@
 }
 
 .pro {
-    flex: 1 1 calc(25% - 20px); /* מתאים ל-4 מוצרים בשורה */
+    flex: 1 1 calc(25% - 20px); /* ×ž×ª××™× ×œ-4 ×ž×•×¦×¨×™× ×‘×©×•×¨×” */
     box-sizing: border-box;
     padding: 10px;
     border: 1px solid #ddd;
@@ -56,5 +56,4 @@
     height: auto;
     border-radius: 8px;
 }
-
 

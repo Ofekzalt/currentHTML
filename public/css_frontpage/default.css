@@ -38,6 +38,7 @@ margin: 15px 0 20px 0;
 body { 
     width: 100%;
 background-color: rgb(255, 255, 255);
+
 }a {
     text-decoration: none; /* Remove underline */
     color: inherit; /* Optional: Inherit the text color from parent element */

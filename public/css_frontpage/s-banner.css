@@ -1,62 +1,74 @@
-#s-banner{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-  
+#s-banner {
+    display: flex;            /* Flexbox to lay out items horizontally */
+    justify-content: space-between;  /* Space items evenly across the container */
+    gap:20px;
+    padding-left: 10px;
+
 }
-#s-banner .banner-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    background-image: url(/Public/img/banner1.jpg);
-    min-width:620px;
-    height: 50vh;
-    background-size: cover;
-    background-position: center;
-    padding: 30px;
-}
+
+#s-banner .banner-box, 
 #s-banner .banner-box2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-    background-image: url(/Public/img/banner2.jpg);
-    min-width:620px;
-    height: 50vh;
     background-size: cover;
     background-position: center;
     padding: 30px;
+    min-width: 620px;
+    height: 50vh;
+    padding-left: 20px;
 }
-#s-banner h4{
+
+#s-banner .banner-box {
+    background-image: url(/img/banner1.jpg);
+    max-height: 80vh;  /* Ensure the image doesn't overflow the height of the viewport */
+    object-fit: contain;
+    width:150px;
+
+}
+
+#s-banner .banner-box2 {
+    background-image: url(/img/banner2.jpg);
+     /* Ensure the image doesn't overflow the height of the viewport */
+    object-fit: contain;
+    max-height: 80vh;  /* Ensure the image doesn't overflow the height of the viewport */
+
+}
+
+#s-banner h4 {
     color: white;
     font-size: 20px;
     font-weight: 300;
 }
-#s-banner h2{
+
+#s-banner h2 {
     color: white;
     font-size: 28px;
     font-weight: 800;
 }
-#s-banner span{
+
+#s-banner span {
     color: white;
     font-size: 14px;
     font-weight: 500;
     padding: 15px;
 }
-button.white{
+
+button.white {
     font-size: 13px;
     font-weight: 600;
     padding: 11px 18px;
-    color:rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
     background-color: transparent;
     border-radius: 4px;
     cursor: pointer;
-    border:  1px solid rgb(178, 178, 178);
-    outline:none;
+    border: 1px solid rgb(178, 178, 178);
+    outline: none;
     transition: 0.2s;
 }
+
 #s-banner .banner-box:hover button {
-background-color: rgb(216, 216, 216);
-border: 1px solid rgb(164, 164, 164);
+    background-color: rgb(147, 9, 9);
+    border: 1px solid rgb(138, 11, 11);
 }

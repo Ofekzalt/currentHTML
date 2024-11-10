@@ -13,13 +13,7 @@ body {
     color: #333;
 }
 
-/* Header Styles */
-header {
-    background-color: #5e0010; /* Jordan Red */
-    color: white;
-    padding: 20px;
-    text-align: center;
-}
+
 
 /* Main Styles */
 main {
@@ -28,9 +22,15 @@ main {
 
 /* Container for Chart and Description */
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    display: flex;               /* Use flexbox to position items side by side */
+    justify-content: space-between;  /* Ensures the items inside are spaced evenly */
+    align-items: flex-start;     /* Align items at the top */
+    width: 50%;                  /* Each container will take up 50% of the parent container */
+    padding: 0 10px;             /* Optional: Adjust padding if needed for spacing */
+}
+
+.container + .container {
+    margin-left: 0;  /* Remove any default margin between containers if needed */
 }
 
 /* Chart Container */

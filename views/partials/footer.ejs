@@ -29,22 +29,20 @@
         <div class="col">
             <h4>About</h4>
             <a href="/about">About Us</a>
-            <br><a href="#">Privacy Policy</a>
-            <br><a href="#">Terms & Conditions</a>
-            <br><a href="#">Contact Us</a>
+            <br><a href="/about">Privacy Policy</a>
+            <br><a href="/about">Terms & Conditions</a>
+            <br><a href="/contact">Contact Us</a>
         </div>
         <div class="col">
             <h4>My Account</h4>
             <% if(user){ %>
                 <a href="/cart">View Cart</a>
-                <br><a href="/wishlist">My Wishlist</a>
-                <br><a href="/help">Help</a>
+                <br><a href="/contact">Help</a>
             <% } else { %>
                 <a href="/login">Sign In</a>
                 <br><a href="/register">Register</a>
                 <br><a href="/cart">View Cart</a>
-                <br><a href="/wishlist">My Wishlist</a>
-                <br><a href="/help">Help</a>
+                <br><a href="/cart">My Wishlist</a>
             <% } %>
         </div>
         <div class="col install">
@@ -59,7 +57,7 @@
                 </a>
             </div>
             <p>Secure Payment Gateways</p>
-            <img src="/img/pay.jpg" alt="Payment Methods" style="width:370px; height: 100px;">
+            <img src="/img/pay.jpg" alt="Payment Methods" style="width:370px; height: 100px;  max-height: 100vh; object-fit: contain;">
         </div>
     </div>
     <div class="copyright">
@@ -68,8 +66,8 @@
 </footer>
 
 <!-- JavaScript Files -->
-<script src="/js_frontpage/script.js"></script> 
-<script src="/js_frontpage/index.js"></script>
+<script src="/script.js"></script> 
+<script src="/index.js"></script>
 
 <script>
     // Hide the footer on 'login' and 'register' pages

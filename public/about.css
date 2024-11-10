@@ -13,6 +13,40 @@ body {
     color: #333;
 }
 
+/* Center the button */
+.container {
+    text-align: center;
+}
+
+button {
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    background-color: #4a1313; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 50px; /* Rounded corners */
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Hover and focus effects */
+button:hover {
+    background-color: #8a1b1b;
+    transform: translateY(-3px); /* Slight lifting effect */
+}
+
+button:active {
+    background-color: #571010; /* Darker green on click */
+    transform: translateY(0); /* Reset lifting effect */
+}
+
+/* Optional: Add a subtle animation */
+button:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(87, 14, 14, 0.5);
+}
+
 /* Header Styles */
 header {
     background-color: #770216; /* Jordan Red */

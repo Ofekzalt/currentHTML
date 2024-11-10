@@ -1,40 +1,36 @@
+document.getElementById('registrationForm').addEventListener('submit', function(event) {
+    event.preventDefault();  // Prevent form submission from reloading the page
 
-const form = document.getElementById('registrationForm');
-const emailField = document.getElementById('email');
-const passwordField = document.getElementById('password');
-const confirmPasswordField = document.getElementById('confirmPassword');
-const warningMessage = document.getElementById('warningMessage');
+    // Get form data
+    const formData = new FormData(this);
+    const feedbackDiv = document.getElementById('feedback');
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
-    
-    const email = emailField.value;
-    const password = passwordField.value;
-    const confirmPassword = confirmPasswordField.value;
+    // Clear any previous feedback
+    feedbackDiv.classList.remove('success', 'error');
+    feedbackDiv.style.display = 'none';
 
-   
-    if (password === confirmPassword) {
-       
-        const userData = {
-            email: email,
-            password: password 
-        };
+    // Disable the submit button to prevent multiple submissions
+    document.getElementById('registerBtn').disabled = true;
 
-       
-        const existingUsers = JSON.parse(localStorage.getItem('users')) || [];
+    // AJAX request using Axios
+    axios.post('/api/auth/register', formData)
+        .then(function(response) {
+            // Show success message if registration is successful
+            feedbackDiv.classList.add('success');
+            feedbackDiv.innerHTML = 'Registration successful! Please log in.';
+            feedbackDiv.style.display = 'block';
 
-      
-        existingUsers.push(userData);
-
-        
-        localStorage.setItem('users', JSON.stringify(existingUsers));
-
-       
-        alert("Registration successful!");
-
-        form.reset();
-    } else {
-       
-        warningMessage.classList.remove('hidden');
-    }
+            // Optionally, you could redirect the user to the login page after success:
+            // window.location.href = '/login.html';
+        })
+        .catch(function(error) {
+            // Show error message if registration fails
+            feedbackDiv.classList.add('error');
+            feedbackDiv.innerHTML = 'Registration failed. Please try again.';
+            feedbackDiv.style.display = 'block';
+        })
+        .finally(function() {
+            // Re-enable the submit button after the request is complete
+            document.getElementById('registerBtn').disabled = false;
+        });
 });

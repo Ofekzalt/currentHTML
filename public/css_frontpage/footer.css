@@ -75,6 +75,8 @@ a:hover {
 .install .row img {
   margin: 10px;
   border-radius: 5px;
+  max-height: 100vh;  /* Ensure the image doesn't overflow the height of the viewport */
+  object-fit: contain;
 }
 
 .copyright {

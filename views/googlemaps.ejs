@@ -1,75 +1,72 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>Maps and Places Autocomplete</title>
-    <script>
-      async function init() {
-        await customElements.whenDefined('gmp-map');
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="about.css">
+  <title>Our Location</title>
+</head>
+<body>
 
-        const map = document.querySelector('gmp-map');
-        const marker = document.querySelector('gmp-advanced-marker');
-        const placePicker = document.querySelector('gmpx-place-picker');
-        const infowindow = new google.maps.InfoWindow();
 
-        map.innerMap.setOptions({
-          mapTypeControl: false
-        });
 
-        placePicker.addEventListener('gmpx-placechange', () => {
-          const place = placePicker.value;
+<main>
+    <section>
+        <h2>Find Us on the Map</h2>
+        <div class="googlemap-container">
+            <div class="googlemap">
+                <gmpx-api-loader key="<%=GOOGLE_MAP_KEY%>" solution-channel="GMP_GE_mapsandplacesautocomplete_v1"></gmpx-api-loader>
+                <gmp-map center="32.041673657233396, 34.75979783366156" zoom="13" map-id="DEMO_MAP_ID">
+                    <div slot="control-block-start-inline-start" class="place-picker-container">
+                        <gmpx-place-picker placeholder="Enter an address"></gmpx-place-picker>
+                    </div>
+                    <gmp-advanced-marker position="32.041673657233396, 34.75979783366156"></gmp-advanced-marker>
+                </gmp-map>
+            </div>
+        </div>
+    </section>
+</main>
 
-          if (!place.location) {
-            window.alert(
-              "No details available for input: '" + place.name + "'"
-            );
-            infowindow.close();
-            marker.position = true;
-            return;
-          }
 
-          if (place.viewport) {
-            map.innerMap.fitBounds(place.viewport);
-          } else {
-            map.center = place.location;
-            map.zoom = 17;
-          }
 
-          marker.position = place.location;
-          infowindow.setContent(
-            `<strong>${place.displayName}</strong><br>
-             <span>${place.formattedAddress}</span>
-          `);
-          infowindow.open(map.innerMap, marker);
-        });
+<script>
+  async function init() {
+    await customElements.whenDefined('gmp-map');
+    const map = document.querySelector('gmp-map');
+    const marker = document.querySelector('gmp-advanced-marker');
+    const placePicker = document.querySelector('gmpx-place-picker');
+    const infowindow = new google.maps.InfoWindow();
+
+    map.innerMap.setOptions({ mapTypeControl: false });
+
+    placePicker.addEventListener('gmpx-placechange', () => {
+      const place = placePicker.value;
+
+      if (!place.location) {
+        window.alert("No details available for input: '" + place.name + "'");
+        infowindow.close();
+        marker.position = true;
+        return;
       }
 
-      document.addEventListener('DOMContentLoaded', init);
-    </script>
-    <script type="module" src="https://unpkg.com/@googlemaps/extended-component-library@0.6">
-    </script>
-    <style>
-    .googlemap{
-        height: 450px;
-        width: 600px;
-        margin: 0;
-        padding: 0;
+      if (place.viewport) {
+        map.innerMap.fitBounds(place.viewport);
+      } else {
+        map.center = place.location;
+        map.zoom = 17;
       }
-      .place-picker-container {
-        padding: 20px;
-      }
-    </style>
 
-  </head>
-  <body>
-    <div class="googlemap">
-      <gmpx-api-loader key=<%=GOOGLE_MAP_KEY%> solution-channel="GMP_GE_mapsandplacesautocomplete_v1">
-    </gmpx-api-loader>
-    <gmp-map center="32.041673657233396, 34.75979783366156" zoom="13" map-id="DEMO_MAP_ID">
-      <div slot="control-block-start-inline-start" class="place-picker-container">
-        <gmpx-place-picker placeholder="Enter an address"></gmpx-place-picker>
-      </div>
-      <gmp-advanced-marker position="32.041673657233396, 34.75979783366156"></gmp-advanced-marker>
-    </gmp-map>
-    </div>
-  </body>
+      marker.position = place.location;
+      infowindow.setContent(
+        `<strong>${place.displayName}</strong><br><span>${place.formattedAddress}</span>`
+      );
+      infowindow.open(map.innerMap, marker);
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', init);
+</script>
+<script type="module" src="https://unpkg.com/@googlemaps/extended-component-library@0.6"></script>
+
+</body>
 </html>

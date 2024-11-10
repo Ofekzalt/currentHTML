@@ -1,0 +1,203 @@
+[
+    
+     {
+       "id": 1,
+       "name": "Air Jordan 1 Retro Tie Dye",
+       "image": "ProductsImg/img1.png",
+       "caption": "The Amazing Air Jordan 1 could be yours right now!!!!",
+       "price": 115,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Tie Dye",
+       "gender": "Female",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 2,
+       "name": "Air Jordan 4 Tech White (White Oreo)",
+       "image": "ProductsImg/img2.png",
+       "caption": "The Amazing Air Jordan 4 Tech White could be yours right now!!!!",
+       "price": 125,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "White",
+       "gender": "Male",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 3,
+       "name": "Air Jordan 4 Black Cat",
+       "image": "ProductsImg/img3.png",
+       "caption": "The Amazing Air Jordan 4 Black Cat could be yours right now!!!!",
+       "price": 145,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Black",
+       "gender": "Female",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 4,
+       "name": "Air Jordan 4 Military Black",
+       "image": "ProductsImg/img4.png",
+       "caption": "The Amazing Air Jordan 4 Military Black could be yours right now!!!!",
+       "price": 105,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Black",
+       "gender": "Unisex",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 5,
+       "name": "Air Jordan 1 High Dark Mocha",
+       "image": "ProductsImg/img5.png",
+       "caption": "The Amazing Air Jordan 1 High Dark Mocha could be yours right now!!!!",
+       "price": 107,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Dark Mocha",
+       "gender": "Unisex",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 6,
+       "name": "Air Jordan 4 Retro University Blue",
+       "image": "ProductsImg/img6.png",
+       "caption": "The Amazing Air Jordan 4 Retro University Blue could be yours right now!!!!",
+       "price": 124,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Blue",
+       "gender": "Male",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 7,
+       "name": "Air Jordan 1 High University Blue",
+       "image": "ProductsImg/img7.png",
+       "caption": "The Amazing Air Jordan 1 High University Blue could be yours right now!!!!",
+       "price": 175,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Blue",
+       "gender": "Unisex",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 8,
+       "name": "Air Jordan 1 Retro High Og Panda",
+       "image": "ProductsImg/img8.png",
+       "caption": "The Amazing Air Jordan 1 Retro High Og Panda could be yours right now!!!!",
+       "price": 172,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Black & White",
+       "gender": "Unisex",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 9,
+       "name": "Air Jordan 1 Low Wolf Grey",
+       "image": "ProductsImg/img9.png",
+       "caption": "The Amazing Air Jordan 1 Low Wolf Grey could be yours right now!!!!",
+       "price": 95,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Grey",
+       "gender": "Male",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 10,
+       "name": "Air Jordan 1 Low Light Smoke Gray",
+       "image": "ProductsImg/img10.png",
+       "caption": "Air Jordan 1 Low Light Smoke Gray could be yours right now!!!!",
+       "price": 150,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Smoke Gray",
+       "gender": "Unisex",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 11,
+       "name": "Air Jordan 1 Mid Light Smoke Grey (2022)",
+       "image": "ProductsImg/img11.png",
+       "caption": "The Amazing Air Jordan 1 Mid Light Smoke Grey (2022) could be yours right now!!!!",
+       "price": 100,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Light Smoke Grey",
+       "gender": "Male",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 12,
+       "name": "Air Jordan 1 Mid Dutch Green",
+       "image": "ProductsImg/img12.png",
+       "caption": "The Amazing Air Jordan 1 Mid Dutch Green could be yours right now!!!!",
+       "price": 118,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Green",
+       "gender": "Female",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 13,
+       "name": "Air Jordan 1 Low All Star 2021",
+       "image": "ProductsImg/img13.png",
+       "caption": "The Amazing Nike Air Jordan 1 Low All Star 2021 could be yours right now!!!!",
+       "price": 165,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Black & White",
+       "gender": "Unisex",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 14,
+       "name": "Air Jordan 1 Mid Wolf Grey",
+       "image": "ProductsImg/img14.png",
+       "caption": "The Amazing Air Jordan 1 Mid Wolf Grey could be yours right now!!!!",
+       "price": 110,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Grey",
+       "gender": "Unisex",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 15,
+       "name": "Air Jordan 1 Mid Chicago Black Toe",
+       "image": "ProductsImg/img15.png",
+       "caption": "The Amazing Air Jordan 1 Mid Chicago Black Toe could be yours right now!!!!",
+       "price": 200,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Red",
+       "gender": "Male",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 16,
+       "name": "Air Jordan 1 Mid Gym Red Black White",
+       "image": "ProductsImg/img16.png",
+       "caption": "The Amazing Air Jordan 1 Mid Gym Red Black White could be yours right now!!!!",
+       "price": 120,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Red",
+       "gender": "Male",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 17,
+       "name": "Air Jordan 1 Mid Barely Orange",
+       "image": "ProductsImg/img17.png",
+       "caption": "The Amazing Air Jordan 1 Mid Barely Orange could be yours right now!!!!",
+       "price": 170,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "Orange",
+       "gender": "Female",
+       "relatedProducts": ["product2", "product3"]
+     },
+     {
+       "id": 18,
+       "name": "Air Jordan 1 Low OG White Red (2022)",
+       "image": "ProductsImg/img18.png",
+       "caption": "The Amazing Air Jordan 1 Low OG White Red could be yours right now!!!!",
+       "price": 130,
+       "sizes": [36, 37, 38, 39, 40, 41, 42],
+       "color": "White",
+       "gender": "Unisex",
+       "relatedProducts": ["product2", "product3"]
+     }
+   ]
+ 
+ 
