@@ -1,13 +1,8 @@
-// controllers/authController.js
-
 const asyncHandler = require('express-async-handler');
 const { validationResult } = require('express-validator');
 const User = require('../models/User');
 const generateToken = require('../utils/generateToken');
 
-// @desc    Register a new user
-// @route   POST /api/auth/register
-// @access  Public
 exports.registerUser = asyncHandler(async (req, res) => {
     // Validate request
     const errors = validationResult(req);
@@ -47,9 +42,6 @@ exports.registerUser = asyncHandler(async (req, res) => {
     }
   });
 
-// @desc    Authenticate user & get token
-// @route   POST /api/auth/login
-// @access  Public
 exports.loginUser = asyncHandler(async (req, res) => {
   // Validate request
   const errors = validationResult(req);
@@ -82,9 +74,6 @@ exports.loginUser = asyncHandler(async (req, res) => {
   }
 });
 
-// @desc    Logout user & clear cookie
-// @route   POST /api/auth/logout
-// @access  Public
 exports.logoutUser = asyncHandler(async (req, res) => {
   res.cookie('token', '', {
     httpOnly: true,

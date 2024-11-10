@@ -45,7 +45,7 @@ exports.googlemapsPage = (req, res) => {
 
 exports.productCatalogPage = async (req, res) => {
   try {
-      const products = await Product.find(); // Fetch all products from the database
+      const products = await Product.find(); 
       res.render('productCatalog', {
           title: 'Product Catalog',
           stylesheet: 'productCatalog.css',
@@ -57,8 +57,3 @@ exports.productCatalogPage = async (req, res) => {
       res.status(500).send('Internal Server Error');
   }
 };
-/**
- * @desc    Render Product Catalog Page
- * @route   GET /product-catalog
- * @access  Public
- */

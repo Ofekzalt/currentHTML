@@ -35,9 +35,6 @@ exports.getProduct = asyncHandler(async (req, res) => {
     }
 });
 
-// @desc    Create a new product
-// @route   POST /
-// @access  Admin
 exports.createProduct = asyncHandler(async (req, res) => {
     const { name, quantity, caption, price, color, gender } = req.body;
 
@@ -62,9 +59,6 @@ exports.createProduct = asyncHandler(async (req, res) => {
     res.status(201).json(createdProduct);
 });
 
-// @desc    Update a product
-// @route   PUT /:productId
-// @access  Admin
 exports.updateProduct = asyncHandler(async (req, res) => {
     const { name, quantity, caption, price, color, gender } = req.body;
     const product = await Product.findById(req.params.productId);
@@ -89,9 +83,6 @@ exports.updateProduct = asyncHandler(async (req, res) => {
     }
 });
 
-// @desc    Delete a product
-// @route   DELETE /:productId
-// @access  Admin
 exports.deleteProduct = asyncHandler(async (req, res) => {
     const productId = req.params.productId;
 
