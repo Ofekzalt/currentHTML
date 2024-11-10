@@ -5,7 +5,6 @@ const bcrypt = require('bcryptjs');
 
 const userSchema = mongoose.Schema(
   {
-
     email: {
       type: String,
       required: [true, 'Please add an email'],
@@ -25,6 +24,12 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    orders: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Order'
+      }
+    ]
   },
   {
     timestamps: true,

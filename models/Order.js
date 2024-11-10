@@ -28,10 +28,10 @@ const orderSchema = new mongoose.Schema({
         type: Number,
         required: true,
     },
-    // shippingAddress: {
-    //     type: String,
-    //     required: true,
-    // },
+    shippingAddress: {
+        type: String,
+        required: true,
+    },
     placedAt: {
         type: Date,
         default: Date.now,
