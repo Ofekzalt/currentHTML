@@ -1,10 +1,10 @@
 // controllers/orderController.js
 
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 const Order = require("../models/Order");
 const Product = require("../models/Product"); // Import Product model to validate products
-const fs = require('fs').promises;
-const path = require('path');
+const fs = require("fs").promises;
+const path = require("path");
 
 /**
  * @desc    Create a new order based on the provided products
@@ -12,72 +12,80 @@ const path = require('path');
  * @access  Private (Authenticated Users)
  */
 exports.createOrder = async (req, res) => {
-    try {
-        const { products } = req.body;
+  try {
+    const { products } = req.body;
 
-        // Validate request body
-        if (!products || !Array.isArray(products) || products.length === 0) {
-            return res.status(400).json({ message: "Products are required to create an order." });
-        }
-
-        // Initialize total price
-        let totalPrice = 0;
-
-        // Array to hold validated products        const validatedProducts = [];
-
-        // Iterate over each product to validate and calculate total price
-        for (const item of products) {
-            const { product: productId, quantity } = item;
-
-            // Validate product ID and quantity
-            if (!mongoose.Types.ObjectId.isValid(productId)) {
-                return res.status(400).json({ message: `Invalid product ID format: ${productId}` });
-            }
-
-            if (!quantity || typeof quantity !== 'number' || quantity < 1) {
-                return res.status(400).json({ message: `Invalid quantity for product ID: ${productId}` });
-            }
-
-            // Fetch the product from the database
-            const product = await Product.findById(productId);
-
-            if (!product) {
-                return res.status(404).json({ message: `Product not found with ID: ${productId}` });
-            }
-
-            // Calculate total price
-            totalPrice += product.price * quantity;
-
-            // Push validated product details
-            validatedProducts.push({
-                product: product._id,
-                quantity
-            });
-        }
-
-        // Create the order
-        const order = new Order({
-            user: req.user.id,
-            products: validatedProducts,
-            totalPrice,
-        });
-
-        await order.save();
-
-        // Optionally, populate the order's products for response
-        await order.populate('products.product');
-
-        res.status(201).json({
-            message: "Order created successfully.",
-            order
-        });
-    } catch (error) {
-        console.error("Create order error:", error);
-        res.status(500).json({ 
-            message: "An error occurred while creating the order.", 
-            error: error.message 
-        });
+    // Validate request body
+    if (!products || !Array.isArray(products) || products.length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Products are required to create an order." });
     }
+
+    // Initialize total price
+    let totalPrice = 0;
+
+    // Array to hold validated products        const validatedProducts = [];
+
+    // Iterate over each product to validate and calculate total price
+    for (const item of products) {
+      const { product: productId, quantity } = item;
+
+      // Validate product ID and quantity
+      if (!mongoose.Types.ObjectId.isValid(productId)) {
+        return res
+          .status(400)
+          .json({ message: `Invalid product ID format: ${productId}` });
+      }
+
+      if (!quantity || typeof quantity !== "number" || quantity < 1) {
+        return res
+          .status(400)
+          .json({ message: `Invalid quantity for product ID: ${productId}` });
+      }
+
+      // Fetch the product from the database
+      const product = await Product.findById(productId);
+
+      if (!product) {
+        return res
+          .status(404)
+          .json({ message: `Product not found with ID: ${productId}` });
+      }
+
+      // Calculate total price
+      totalPrice += product.price * quantity;
+
+      // Push validated product details
+      validatedProducts.push({
+        product: product._id,
+        quantity,
+      });
+    }
+
+    // Create the order
+    const order = new Order({
+      user: req.user.id,
+      products: validatedProducts,
+      totalPrice,
+    });
+
+    await order.save();
+
+    // Optionally, populate the order's products for response
+    await order.populate("products.product");
+
+    res.status(201).json({
+      message: "Order created successfully.",
+      order,
+    });
+  } catch (error) {
+    console.error("Create order error:", error);
+    res.status(500).json({
+      message: "An error occurred while creating the order.",
+      error: error.message,
+    });
+  }
 };
 
 /**
@@ -86,33 +94,33 @@ exports.createOrder = async (req, res) => {
  * @access  Private (Order Owner or Admin)
  */
 exports.getOrder = async (req, res) => {
-    const { orderId } = req.params;
+  const { orderId } = req.params;
 
-    // Validate ObjectId
-    if (!mongoose.Types.ObjectId.isValid(orderId)) {
-        return res.status(400).json({ message: "Invalid order ID format." });
+  // Validate ObjectId
+  if (!mongoose.Types.ObjectId.isValid(orderId)) {
+    return res.status(400).json({ message: "Invalid order ID format." });
+  }
+
+  try {
+    const order = await Order.findById(orderId).populate("products.product");
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found." });
     }
 
-    try {
-        const order = await Order.findById(orderId).populate('products.product');
-
-        if (!order) {
-            return res.status(404).json({ message: "Order not found." });
-        }
-
-        // Check if the requesting user is the owner or an admin
-        if (order.user.toString() !== req.user.id && req.user.role !== 'admin') {
-            return res.status(403).json({ message: "Access denied." });
-        }
-
-        res.status(200).json(order);
-    } catch (error) {
-        console.error("Get order error:", error);
-        res.status(500).json({ 
-            message: "An error occurred while retrieving the order.", 
-            error: error.message 
-        });
+    // Check if the requesting user is the owner or an admin
+    if (order.user.toString() !== req.user.id && req.user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied." });
     }
+
+    res.status(200).json(order);
+  } catch (error) {
+    console.error("Get order error:", error);
+    res.status(500).json({
+      message: "An error occurred while retrieving the order.",
+      error: error.message,
+    });
+  }
 };
 
 /**
@@ -121,26 +129,26 @@ exports.getOrder = async (req, res) => {
  * @access  Private (Authenticated Users)
  */
 exports.getUserOrders = async (req, res) => {
-    try {
-        const orders = await Order.find({ user: req.user.id })
-            .populate('products.product')
-            .sort({ createdAt: -1 }); // Sort by latest orders first
+  try {
+    const orders = await Order.find({ user: req.user.id })
+      .populate("products.product")
+      .sort({ createdAt: -1 }); // Sort by latest orders first
 
-        if (orders.length === 0) {
-            return res.status(200).json({ message: "No orders found." });
-        }
-
-        res.status(200).json({
-            count: orders.length,
-            orders
-        });
-    } catch (error) {
-        console.error("Get user orders error:", error);
-        res.status(500).json({ 
-            message: "An error occurred while retrieving orders.", 
-            error: error.message 
-        });
+    if (orders.length === 0) {
+      return res.status(200).json({ message: "No orders found." });
     }
+
+    res.status(200).json({
+      count: orders.length,
+      orders,
+    });
+  } catch (error) {
+    console.error("Get user orders error:", error);
+    res.status(500).json({
+      message: "An error occurred while retrieving orders.",
+      error: error.message,
+    });
+  }
 };
 
 /**
@@ -149,39 +157,182 @@ exports.getUserOrders = async (req, res) => {
  * @access  Private (Admin Only)
  */
 exports.deleteOrder = async (req, res) => {
-    const { orderId } = req.params;
+  const { orderId } = req.params;
 
-    // Validate ObjectId
-    if (!mongoose.Types.ObjectId.isValid(orderId)) {
-        return res.status(400).json({ message: "Invalid order ID format." });
+  // Validate ObjectId
+  if (!mongoose.Types.ObjectId.isValid(orderId)) {
+    return res.status(400).json({ message: "Invalid order ID format." });
+  }
+
+  try {
+    const order = await Order.findById(orderId);
+
+    if (!order) {
+      return res.status(404).json({ message: "Order not found." });
     }
 
-    try {
-        const order = await Order.findById(orderId);
+    // Check if the requesting user is the owner or an admin
+    if (order.user.toString() !== req.user.id && req.user.role !== "admin") {
+      return res.status(403).json({ message: "Access denied." });
+    }
 
-        if (!order) {
-            return res.status(404).json({ message: "Order not found." });
+    // If your Order model has associated images or other resources, handle their deletion here
+    // Example:
+    // const imagePath = path.resolve(__dirname, '..', order.image);
+    // await fs.unlink(imagePath).catch(err => console.error('Error deleting order image:', err));
+
+    // Delete the order from the database
+    await Order.findByIdAndDelete(orderId);
+
+    res.status(200).json({ message: "Order successfully deleted." });
+  } catch (error) {
+    console.error("Delete order error:", error);
+    res.status(500).json({
+      message: "An error occurred while deleting the order.",
+      error: error.message,
+    });
+  }
+};
+
+exports.createOrder = async (req, res) => {
+  try {
+    const { products } = req.body;
+
+    // Validate request body
+    if (!products || !Array.isArray(products) || products.length === 0) {
+      return res
+        .status(400)
+        .json({ message: "Products are required to create an order." });
+    }
+
+    // Initialize total price
+    let totalPrice = 0;
+
+    // Array to hold validated products
+    const validatedProducts = [];
+
+    // Set to track unique product-size combinations
+    const productSizeSet = new Set();
+
+    // Iterate over each product to validate and calculate total price
+    for (const item of products) {
+      const { product: productId, sizes } = item;
+
+      // Validate product ID format
+      if (!mongoose.Types.ObjectId.isValid(productId)) {
+        return res
+          .status(400)
+          .json({ message: `Invalid product ID format: ${productId}` });
+      }
+
+      // Fetch the product from the database
+      const product = await Product.findById(productId);
+
+      if (!product) {
+        return res
+          .status(404)
+          .json({ message: `Product not found with ID: ${productId}` });
+      }
+
+      // Validate sizes array
+      if (!sizes || !Array.isArray(sizes) || sizes.length === 0) {
+        return res
+          .status(400)
+          .json({ message: `Sizes are required for product ID: ${productId}` });
+      }
+
+      for (const sizeObj of sizes) {
+        let { size, quantity } = sizeObj;
+
+        // Convert size to number if it's a string
+        if (typeof size === "string") {
+          size = parseInt(size, 10);
+          if (isNaN(size)) {
+            return res
+              .status(400)
+              .json({
+                message: `Size must be a number for product ID: ${productId}`,
+              });
+          }
         }
 
-        // Check if the requesting user is the owner or an admin
-        if (order.user.toString() !== req.user.id && req.user.role !== 'admin') {
-            return res.status(403).json({ message: "Access denied." });
+        // Validate size
+        if (typeof size !== "number") {
+          return res
+            .status(400)
+            .json({
+              message: `Size must be a number for product ID: ${productId}`,
+            });
         }
 
-        // If your Order model has associated images or other resources, handle their deletion here
+        // Validate quantity
+        if (typeof quantity !== "number" || quantity < 1) {
+          return res
+            .status(400)
+            .json({ message: `Invalid quantity for product ID: ${productId}` });
+        }
+
+        // Check for duplicate product-size combination
+        const productSizeKey = `${productId}_${size}`;
+        if (productSizeSet.has(productSizeKey)) {
+          return res
+            .status(400)
+            .json({
+              message: `Duplicate size ${size} for product ID: ${productId}`,
+            });
+        }
+        productSizeSet.add(productSizeKey);
+
+        // Check if the size exists for the product
+        if (!product.sizes.includes(size)) {
+          return res
+            .status(400)
+            .json({
+              message: `Invalid size ${size} for product ID: ${productId}`,
+            });
+        }
+
+        // Optionally, check stock availability here
         // Example:
-        // const imagePath = path.resolve(__dirname, '..', order.image);
-        // await fs.unlink(imagePath).catch(err => console.error('Error deleting order image:', err));
+        // const availableStock = getAvailableStock(productId, size);
+        // if (quantity > availableStock) {
+        //     return res.status(400).json({ message: `Insufficient stock for product ID: ${productId}, size: ${size}` });
+        // }
 
-        // Delete the order from the database
-        await Order.findByIdAndDelete(orderId);
+        // Calculate total price
+        totalPrice += product.price * quantity;
 
-        res.status(200).json({ message: "Order successfully deleted." });
-    } catch (error) {
-        console.error("Delete order error:", error);
-        res.status(500).json({ 
-            message: "An error occurred while deleting the order.", 
-            error: error.message 
+        // Push validated product details
+        validatedProducts.push({
+          product: product._id,
+          size,
+          quantity,
         });
+      }
     }
+
+    // Create the order
+    const order = new Order({
+      user: req.user.id,
+      products: validatedProducts,
+      totalPrice,
+      placedAt: new Date(), // Server sets the timestamp
+    });
+
+    await order.save();
+
+    // Optionally, populate the order's products for response
+    await order.populate("products.product");
+
+    res.status(201).json({
+      message: "Order created successfully.",
+      order,
+    });
+  } catch (error) {
+    console.error("Create order error:", error);
+    res.status(500).json({
+      message: "An error occurred while creating the order.",
+      error: error.message,
+    });
+  }
 };

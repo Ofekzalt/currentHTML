@@ -7,54 +7,7 @@ const path = require('path');
 // @desc    Fetch all products
 // @route   GET /product-catalog
 // @access  Public
-exports.getAllProducts = asyncHandler(async (req, res) => {
-        const products = await Product.find();
-        try {
-            // Fetch the product by ID
-            const product = await Product.findById(productId);
-    
-            if (!product) {
-                console.log(`Product not found for ID: ${productId}`);
-                return res.status(404).json({ error: 'Product not found' });
-            }
-    
-            console.log(`Product found: ${product}`);
-            res.status(200).json({ product });
-    
-        } catch (error) {
-            console.error('Error fetching product:', error);
-            res.status(500).json({ error: error.message || 'An error occurred while retrieving the product.' });
-        }
-});
 
-// @desc    Fetch single product by ID
-// @route   GET /:productId
-// @access  Public
-exports.getProduct = async (req, res) => {
-    const productId = req.params.productId;
-    console.log(`Received request for product ID: ${productId}`);
-
-    try {
-        // Fetch the product by ID
-        const product = await Product.findById(productId);
-
-        if (!product) {
-            console.log(`Product not found for ID: ${productId}`);
-            return res.status(404).json({ error: 'Product not found' });
-        }
-
-        console.log(`Product found: ${product}`);
-        res.status(200).json({ product });
-
-    } catch (error) {
-        console.error('Error fetching product:', error);
-        res.status(500).json({ error: error.message || 'An error occurred while retrieving the product.' });
-    }
-};
-
-// @desc    Create a new product
-// @route   POST /
-// @access  Admin
 exports.createProduct = asyncHandler(async (req, res) => {
     const { name, sizes, caption, price, color, gender } = req.body;
 
@@ -79,6 +32,51 @@ exports.createProduct = asyncHandler(async (req, res) => {
     res.status(201).json(createdProduct);
 });
 
+exports.getAllProducts = asyncHandler(async (req, res) => {
+        try {
+            // Fetch the product by ID
+            const products = await Product.find();
+    
+            if (!products) {
+                return res.status(404).json({ error: 'products not found' });
+            }
+            res.status(200).json(products);
+    
+        } catch (error) {
+            res.status(500).json({ error: error.message || 'An error occurred while retrieving the products.'});
+        }
+});
+
+// @desc    Fetch single product by ID
+// @route   GET /:productId
+// @access  Public
+exports.getProduct = async (req, res) => {
+    const productId = req.params.productId;
+    console.log(`Received request for product ID: ${productId}`);
+
+    try {
+        // Fetch the product by ID
+        const product = await Product.findById({productId});
+
+        if (!product) {
+            console.log(`Product not found for ID: ${productId}`);
+            return res.status(404).json({ error: 'Product not found' });
+        }
+
+        console.log(`Product found: ${product}`);
+        res.status(200).json({ product });
+
+    } catch (error) {
+        console.error('Error fetching product:', error);
+        res.status(500).json({ error: error.message || 'An error occurred while retrieving the product.' });
+    }
+};
+
+// @desc    Create a new product
+// @route   POST /
+// @access  Admin
+
+
 // @desc    Update a product
 // @route   PUT /:productId
 // @access  Admin
@@ -99,7 +97,7 @@ exports.updateProduct = asyncHandler(async (req, res) => {
         }
 
         const updatedProduct = await product.save();
-        res.json(updatedProduct);
+        res.status(201).json(updatedProduct);
     } else {
         res.status(404);
         throw new Error('Product not found');
@@ -114,11 +112,9 @@ exports.deleteProduct = async (req, res) => {
 
     try {
         // Find the product by ID
-        const product = await Product.findById(productId);
+        const product = await Product.findById({productId});
         if (!product) {
-            return res.status(404).json({
-                message: 'Product not found.'
-            });
+            return res.status(404).json({message: 'Product not found.'});
         }
 
         // Resolve the image path securely
@@ -137,7 +133,7 @@ exports.deleteProduct = async (req, res) => {
                 // Optionally, you can notify the user or admin about the image deletion failure
             }
 
-            return res.status(200).json({
+            return res.status(201).json({
                 message: `Product with _id: ${productId} and its image were deleted successfully.`
             });
         } else {
@@ -148,8 +144,6 @@ exports.deleteProduct = async (req, res) => {
 
     } catch (error) {
         console.error('Error deleting product:', error);
-        res.status(500).json({
-            error: error.message || 'An error occurred while deleting the product.'
-        });
+        res.status(500).json({ error: error.message || 'An error occurred while deleting the product.'});
     }
 };

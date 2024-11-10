@@ -12,17 +12,16 @@ const orderSchema = new mongoose.Schema({
             ref: "Product",
             required: true,
         },
-        // Array of sizes and quantities for each product
         sizes: [{
             size: {
                 type: String, 
                 required: true,
             },
-            quantity: {
-                type: Number,
-                required: true,
-                min: 1,
-            },
+            // quantity: {
+            //     type: Number,
+            //     required: true,
+            //     min: 1,
+            // },
         }],
     }],
     totalPrice: {
