@@ -1,12 +1,8 @@
-// controllers/userController.js
-
 const asyncHandler = require('express-async-handler');
 const { validationResult } = require('express-validator');
 const User = require('../models/User');
 
-// @desc    Delete a user
-// @route   DELETE /api/users/delete/:id
-// @access  Admin
+
 exports.deleteUser = asyncHandler(async (req, res) => {
   const user = await User.findById(req.params.id);
 
@@ -19,9 +15,7 @@ exports.deleteUser = asyncHandler(async (req, res) => {
   res.json({ message: 'User removed' });
 });
 
-// @desc    Update a user
-// @route   PUT /api/users/update/:id
-// @access  Admin
+
 exports.updateUser = asyncHandler(async (req, res) => {
   // Validate request
   const errors = validationResult(req);

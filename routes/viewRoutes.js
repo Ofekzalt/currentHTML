@@ -7,11 +7,12 @@ const {
   aboutPage,
   loginPage,
   registerPage,
-  adminDashboard,
   contactPage,
   cartPage,
   googlemapsPage,
-  productPage
+  productPage,
+  orderPage,
+  productCatalogPage
 } = require('../controllers/viewController');
 const { protect, adminOnly } = require('../middleware/auth');
 
@@ -20,15 +21,15 @@ router.get('/', homePage);
 router.get('/login', loginPage);
 router.get('/register', registerPage);
 router.get('/contact', contactPage);
-router.get('/cart', cartPage);
+router.get('/cart', protect, cartPage);
 router.get('/product', productPage);
 router.get('/googlemaps', googlemapsPage);
-
+router.get('/order', protect, orderPage); // Assuming orders require authentication
+router.get('/product-catalog', productCatalogPage);
 
 // Admin-Only Routes
 router.get('/about', protect, adminOnly, aboutPage);
-router.get('/admin', protect, adminOnly, adminDashboard);
+// router.get('/admin', protect, adminOnly, adminDashboard); // If used
 
-// Other routes as needed
 
 module.exports = router;
