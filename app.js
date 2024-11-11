@@ -12,6 +12,7 @@ const userRoutes = require('./routes/userRoutes');
 const orderRoutes = require('./routes/orderRoutes');
 const errorHandler = require('./middleware/errorHandler');
 const morgan = require('morgan');
+const axios = require('axios');
 
 const app = express();
 
@@ -48,6 +49,41 @@ app.use((req, res, next) => {
   res.locals.user = req.user || null;
   res.locals.WEATHER_API = process.env.WEATHER_API|| null;
   next();
+});
+
+
+//Weather API
+
+app.get('/api/weather', async (req, res) => {
+  const city = req.query.city;
+  if (!city) {
+    return res.status(400).json({ error: 'City is required' });
+  }
+
+  try {
+    const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(city)}&appid=${WEATHER_API}&units=metric`;
+
+    const response = await axios.get(apiUrl);
+
+    if (response.data.cod === "404") {
+      return res.status(404).json({ error: 'City not found' });
+    }
+
+    const data = response.data;
+    const weatherData = {
+      city: data.name,
+      country: data.sys.country,
+      temp: data.main.temp,
+      humidity: data.main.humidity,
+      description: data.weather[0].description,
+      icon: data.weather[0].icon,
+    };
+
+    res.json(weatherData);
+  } catch (error) {
+    console.error('Error fetching weather data:', error.message);
+    res.status(500).json({ error: 'Could not fetch the weather data. Please try again later.' });
+  }
 });
 
 // Routes

@@ -52,7 +52,6 @@
 
                     if (response.ok) {
                         alert("Successfully logged out!");
-                        // Redirect to home page
                         window.location.href = "/";
                     } else {
                         alert("Error during logout. Please try again.");
@@ -63,18 +62,5 @@
                 }
             });
         }
-
-        // Hide the header on 'login' and 'register' pages if needed
-        // Optional: If you want to hide the header on specific pages
-        /*
-        if (
-            window.location.pathname.includes("login") ||
-            window.location.pathname.includes("register")
-        ) {
-            document.getElementById("header").style.display = "none";
-        } else {
-            document.getElementById("header").style.display = "flex";
-        }
-        */
     });
 </script>

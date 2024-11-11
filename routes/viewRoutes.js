@@ -26,7 +26,7 @@ router.get('/googlemaps', googlemapsPage);
 router.get('/order', protect, orderPage);
 router.get('/product-catalog', productCatalogPage);
 router.get('/about', aboutPage);
-
+ 
 // Admin-Only Routes
 // router.get('/about', protect, adminOnly, aboutPage);
 // router.get('/admin', protect, adminOnly, adminDashboard); // If used

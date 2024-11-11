@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title || 'Weather API Example' %></title>
+    <link rel="stylesheet" href="/weather.css">
+</head>
+<body>
+    <div class="weather-container">
+        <h1>Current Weather</h1>
+        <div id="weatherInfo">
+            <input type="text" id="city" placeholder="Enter city name" />
+            <button onclick="getWeather()">Get Weather</button>
+            <div id="weatherDetails">
+                <!-- Weather details will be displayed here -->
+                <% if (weatherData) { %>
+                    <p>City: <%= weatherData.city %></p>
+                    <p>Temperature: <%= weatherData.temperature %></p>
+                    <p>Description: <%= weatherData.description %></p>
+                <% } %>
+            </div>
+        </div>
+    </div>
+
+    <script src="/services/weatherServices.js"></script>
+</body>
+</html>

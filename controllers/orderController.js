@@ -1,53 +1,52 @@
 const mongoose = require('mongoose');
+const asyncHandler = require('express-async-handler');
 const Order = require("../models/Order");
 const Product = require("../models/Product");
 
-exports.createOrder = async (req, res) => {
+exports.createOrder = asyncHandler(async (req, res) => {
+    console.log('Received req.body:', req.body);
+
+    const { products } = req.body;
+
+    if (!products || !Array.isArray(products) || products.length === 0) {
+        res.status(400);
+        throw new Error('Products are required to create an order.');
+    }
+
     try {
-        const { products } = req.body;
-
-        // Validate request body
-        if (!products || !Array.isArray(products) || products.length === 0) {
-            return res.status(400).json({ message: "Products are required to create an order." });
-        }
-
-        // Initialize total values
         let totalPrice = 0;
         let totalQuantity = 0;
         const validatedProducts = [];
 
-        // Validate each product
         for (const item of products) {
             const { product: productId, quantity } = item;
 
-            // Validate product ID and quantity
             if (!mongoose.Types.ObjectId.isValid(productId)) {
-                return res.status(400).json({ message: `Invalid product ID format: ${productId}` });
+                res.status(400);
+                throw new Error(`Invalid product ID format: ${productId}`);
             }
             if (!quantity || typeof quantity !== 'number' || quantity < 1) {
-                return res.status(400).json({ message: `Invalid quantity for product ID: ${productId}` });
+                res.status(400);
+                throw new Error(`Invalid quantity for product ID: ${productId}`);
             }
 
-            // Fetch the product from the database
             const product = await Product.findById(productId);
             if (!product) {
-                return res.status(404).json({ message: `Product not found with ID: ${productId}` });
+                res.status(404);
+                throw new Error(`Product not found with ID: ${productId}`);
             }
 
-            // Update total values
             totalPrice += product.price * quantity;
             totalQuantity += quantity;
 
-            // Add validated product details
             validatedProducts.push({
                 product: product._id,
-                quantity
+                quantity,
             });
         }
 
-        // Create the order with total values
         const order = new Order({
-            user: req.user.id,
+            user: req.user._id,
             products: validatedProducts,
             totalQuantity,
             totalPrice,
@@ -57,18 +56,15 @@ exports.createOrder = async (req, res) => {
         await order.populate('products.product');
 
         res.status(201).json({
-            message: "Order created successfully.",
-            order
+            message: 'Order created successfully.',
+            order,
         });
     } catch (error) {
-        console.error("Create order error:", error);
-        res.status(500).json({ 
-            message: "An error occurred while creating the order.", 
-            error: error.message 
-        });
+        console.error('Create order error:', error);
+        res.status(500);
+        throw new Error('An error occurred while creating the order.');
     }
-};
-
+});
 exports.getOrder = async (req, res) => {
     const { orderId } = req.params;
 

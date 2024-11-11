@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
     const loadingSpinner = document.getElementById('loading-spinner');
-    
 
     // Store all products for filtering and sorting
     let allProducts = Array.from(document.querySelectorAll('.product'));
@@ -114,3 +113,49 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initial display
     applyFiltersAndSort();
 });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');  // בחר את כל הכפתורים של הוספה לעגלה
+
+    addToCartButtons.forEach(button => {
+    button.addEventListener('click', async function(event) {
+        event.preventDefault();
+
+        const productId = button.getAttribute('data-id');  // קח את ה-ID של המוצר
+        console.log("Product ID:", productId);
+
+        const product = await getProductById(productId);  // קח את פרטי המוצר
+
+            if (product) {
+                addToCart(product);  // הוסף את המוצר לעגלה
+                console.log(product);
+            } else {
+                console.log("Fetching product with ID:", productId);
+
+                alert("Product not found");
+            }
+        });
+    });
+});
+
+
+
+// פונקציה לדימוי של קבלת פרטי המוצר (אפשר להחליף ב-fetch אם זה נשלף מה-API)
+async function getProductById(productId) {
+    try {
+        const response = await fetch(`/product/${productId}`);
+        const product = await response.json();
+
+        if (response.ok) {
+            console.log("Product fetched:", product);  // בדיקת נתוני המוצר
+            return product;
+        } else {
+            alert("Error fetching product");
+        }
+    } catch (error) {
+        console.error('Error fetching product:', error);
+    }
+}
+
+
+console.log(JSON.parse(localStorage.getItem('cart')));

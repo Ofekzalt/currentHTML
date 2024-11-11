@@ -1,3 +1,4 @@
+//script.js
 function getProductIdFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get("id");
@@ -35,26 +36,39 @@ function loadProduct() {
         .catch(error => console.error('Error fetching product data:', error));
 }
 
-function addToCart(product) {
+// פונקציה להוספת מוצר לעגלה
+function addToCart(productId) {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
-    const existingItem = cart.find(item => item.id === product.id);
 
-    if (existingItem) {
-        existingItem.quantity += 1;
-        alert(`כמות המוצר ${product.name} עודכנה לעת ${existingItem.quantity}.`);
-
-    } else {
-        product.quantity = 1;
-        cart.push(product);
-        alert(`המוצר ${product.name} נוסף לעגלה.`);
-
-    }
-
-    localStorage.setItem('cart', JSON.stringify(cart));
-     // שואל את המשתמש אם הוא רוצה לעבור לעגלה
-     if (confirm("האם אתה רוצה לעבור לעגלה?")) {
-        window.location.href = "cart.html";
-     }
+    // Fetch product details from the server or from the DOM
+    fetch(`/products/${productId}`)
+        .then(response => response.json())
+        .then(product => {
+            const existingItem = cart.find(item => item.id === product._id);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id: product._id, // Use the product's _id as the id
+                    name: product.name,
+                    price: product.price,
+                    image: product.image,
+                    quantity: 1,
+                });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            console.log('Cart after adding item:', cart);
+        })
+        .catch(error => {
+            console.error('Error fetching product details:', error);
+        });
 }
+
+
+
+
+console.log(JSON.parse(localStorage.getItem('cart')));
+console.log(localStorage.getItem('cart'));
+
 
 document.addEventListener('DOMContentLoaded', loadProduct);

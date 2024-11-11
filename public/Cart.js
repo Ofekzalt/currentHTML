@@ -1,42 +1,36 @@
-const checkOutButton = document.getElementById('checkout-button');
+// cart.js
 
-
+// Function to display cart items on the page
 function displayCartItems() {
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartContainer = document.getElementById("cart-items");
-    
     cartContainer.innerHTML = "";
 
-    cartItems.forEach(item => {
+    cart.forEach(item => {
         const itemDiv = document.createElement("div");
         itemDiv.classList.add("cart-item");
-
-        const name = item.name || "לא מוגדר";
-        const price = item.price || "0.00";
-        const quantity = item.quantity || 1;
-
         itemDiv.innerHTML = `
             <div class="item-info">
-                <img src="${item.image || 'path/to/default-image.jpg'}" alt="${name}" class="cart-item-image">
+                <img src="${item.image || 'path/to/default-image.jpg'}" alt="${item.name}" class="cart-item-image">
                 <div class="item-details">
-                    <span class="item-name">${name}</span>
-                    <span class="item-price">מחיר: ${price}</span>
-                    <div class="quantity-control">
-                        <button class="decrease-quantity" onclick="updateQuantity(${item.id}, -1)">-</button>
-                        <span class="quantity">${quantity}</span>
-                        <button class="increase-quantity" onclick="updateQuantity(${item.id}, 1)">+</button>
-                    </div>
+                    <span class="item-name">${item.name}</span>
+                    <span class="item-price">מחיר: ${item.price}</span>
+                    <span class="quantity">כמות: ${item.quantity}</span>
                 </div>
             </div>
-            <button class="remove-item" data-id="${item.id}" onclick="removeItemFromCart(${item.id})">הסר</button>
+            <div class="item-actions">
+                <button onclick="updateQuantity('${item.id}', -1)">-</button>
+                <button onclick="updateQuantity('${item.id}', 1)">+</button>
+                <button onclick="removeItemFromCart('${item.id}')">Remove</button>
+            </div>
         `;
-
         cartContainer.appendChild(itemDiv);
     });
 
     updateTotalPrice();
 }
 
+// Function to update the quantity of a cart item
 function updateQuantity(id, amount) {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     const item = cartItems.find(item => item.id === id);
@@ -47,13 +41,17 @@ function updateQuantity(id, amount) {
     }
 }
 
+// Function to update the total price displayed
 function updateTotalPrice() {
     const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    const totalPrice = cartItems.reduce((total, item) => total + (parseFloat(item.price.replace('₪', '')) * item.quantity), 0);
-    document.getElementById('total-price').innerText = `$${ totalPrice.toFixed(2)}`;
+    const totalPrice = cartItems.reduce((total, item) => {
+        const price = parseFloat(item.price) || 0;
+        return total + (price * item.quantity);
+    }, 0);
+    document.getElementById('total-price').innerText = `Total Price: $${totalPrice.toFixed(2)}`;
 }
 
-// פונקציה להסרת פריט מהעגלה
+// Function to remove an item from the cart
 function removeItemFromCart(id) {
     let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
     cartItems = cartItems.filter(item => item.id !== id);
@@ -61,19 +59,8 @@ function removeItemFromCart(id) {
     displayCartItems();
 }
 
-checkOutButton.addEventListener('click', () => {
-    const cartItems = JSON.parse(localStorage.getItem('cart')) || [];
-    console.log(cartItems.length);
-
-    if(cartItems.length === 0){
-        alert("No items in cart");
-    }else{
-        alert("Thank you for buying from us!");
-    }
-});
-
-
-// אתחול תצוגת העגלה בעת טעינת הדף
+// window.onload ensures that the displayCartItems function runs when the page loads
 window.onload = displayCartItems;
 
-console.log(JSON.parse(localStorage.getItem('cart')));
+// Optional: Log the cart contents to the console for debugging
+console.log('Current cart contents:', JSON.parse(localStorage.getItem('cart')));
