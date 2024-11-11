@@ -1,0 +1,145 @@
+/* Basic styling for the page */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f2f5;
+    color: #333;
+}
+
+/* Styling for the main header */
+h1 {
+    text-align: center;
+    padding: 20px;
+    background-color: #c01414;
+    color: #fff;
+    margin: 0;
+    font-size: 2.5em;
+    font-weight: 600;
+}
+
+/* Styling for the order history section */
+#order-history {
+    position: relative; /* Added for pseudo-elements positioning */
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s;
+}
+
+#order-history:hover {
+    transform: scale(1.02);
+}
+
+#order-history h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    font-size: 1.8em;
+    font-weight: 500;
+}
+
+/* Styling the table */
+#orders-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1em;
+    color: #555;
+}
+
+#orders-table thead th {
+    background-color: #b72f20;
+    color: #fff;
+    padding: 20px;
+    text-align: left;
+    font-weight: bold;
+    border-bottom: 10px solid #93a3ad;
+}
+
+#orders-table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #e0e0e0;
+    text-align: left;
+}
+
+/* Adjustments for the new table structure */
+#orders-table thead th:first-child {
+    /* This targets the first column header, now "שם המוצר" */
+    /* Adjust as needed */
+}
+
+#orders-table tbody td:first-child {
+    /* This targets the first column cells, now "שם המוצר" */
+    /* Adjust as needed */
+}
+
+/* Styling rows in the table */
+#orders-table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+#orders-table tbody tr:hover {
+    background-color: #e9f4ff;
+    transition: background-color 0.3s;
+}
+
+/* Decorative circles around the table */
+#order-history::before,
+#order-history::after {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba(74, 144, 226, 0.15);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+#order-history::before {
+    top: -50px;
+    left: -50px;
+}
+
+#order-history::after {
+    bottom: -50px;
+    right: -50px;
+}
+
+/* Responsive adjustments for mobile devices */
+@media (max-width: 600px) {
+    #order-history {
+        padding: 20px;
+    }
+
+    #orders-table thead {
+        display: none;
+    }
+
+    #orders-table tbody tr {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #ddd;
+        margin-bottom: 10px;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    #orders-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px 0;
+        font-size: 1em;
+        border-bottom: none;
+    }
+
+    #orders-table tbody td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        color: #4a90e2;
+        flex-basis: 50%;
+    }
+}

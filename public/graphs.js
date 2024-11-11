@@ -1,4 +1,3 @@
-// Fetch the product data from the external JSON file
 fetch('/views/products.json')
     .then(response => response.json())  // Parse the JSON data
     .then(products => {

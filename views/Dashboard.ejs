@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('partials/head') %> <!-- If you have a head partial -->
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/graph1.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Dashboard Container -->
+    <div class="container">
+        <!-- Add Product and Users Section -->
+        <div class="section">
+            <div class="add-product">
+                <h2>Add Product</h2>
+                <form id="addProductForm" enctype="multipart/form-data">
+                    <!-- Product Name -->
+                    <label for="product-name">Product Name:</label>
+                    <input type="text" id="product-name" name="name" required>
+                
+                    <!-- Image Upload -->
+                    <label for="product-image">Product Image:</label>
+                    <input type="file" id="product-image" name="image" accept="image/*" required>
+                
+                    <!-- Quantity -->
+                    <label for="product-quantity">Quantity:</label>
+                    <input type="number" id="product-quantity" name="quantity" min="1" required>
+                
+                    <!-- Caption -->
+                    <label for="product-caption">Product Caption:</label>
+                    <textarea id="product-caption" name="caption" rows="4" required></textarea>
+                
+                    <!-- Price -->
+                    <label for="product-price">Product Price (in USD):</label>
+                    <input type="number" id="product-price" name="price" min="0" step="0.01" required>
+                
+                    <!-- Gender -->
+                    <label for="product-gender">Gender:</label>
+                    <select id="product-gender" name="gender" required>
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                        <option value="Unisex">Unisex</option>
+                    </select>
+                
+                    <!-- Submit Button -->
+                    <input type="submit" value="Add Product">
+                </form>
+                
+            </div>
+            <div class="remove-section">
+                <h3>Remove Item</h3>
+            
+                <label for="remove-user-id">Remove User (ID):</label>
+                <input type="text" id="remove-user-id" placeholder="Enter user ID to remove">
+                <button onclick="removeUser()">Remove User</button>
+            
+                <label for="remove-product-id">Remove Product (ID):</label>
+                <input type="text" id="remove-product-id" placeholder="Enter product ID to remove">
+                <button onclick="removeProduct()">Remove Product</button>
+            </div>
+        </div>
+        <!-- Graphs Section -->
+        <div class="graphs">
+            <div class="chart-container">
+                <canvas id="salesChart" width="400" height="400"></canvas>
+            </div>
+            <div class="chart-container">
+                <canvas id="chart2" width="400" height="400"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include JavaScript Files -->
+    <script src="/graphs.js"></script>
+    <script src="/graphs2.js"></script>
+    <script src="/remove.js"></script>
+</body>
+</html>

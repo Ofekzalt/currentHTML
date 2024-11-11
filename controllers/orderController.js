@@ -151,41 +151,88 @@ exports.deleteOrder = async (req, res) => {
     }
 };
 
-exports.getAllOrders = async (req, res) => {
-    try {
+// exports.getAllOrders = async (req, res) => {
+//     try {
     
-        // Fetch all orders, populate products and user details, sort by latest
-        const orders = await Order.find()
-            .populate({
-                path: 'products.product',
-                select: 'name price' // Adjust fields to include product details
-            })
-            .populate({
-                path: 'user',
-                select: 'name email' // Adjust fields to include user details
-            })
-            .sort({ placedAt: -1 });
+//         // Fetch all orders, populate products and user details, sort by latest
+//         const orders = await Order.find()
+//             .populate({
+//                 path: 'products.product',
+//                 select: 'name price' // Adjust fields to include product details
+//             })
+//             .populate({
+//                 path: 'user',
+//                 select: 'name email' // Adjust fields to include user details
+//             })
+//             .sort({ placedAt: -1 });
 
-        // If no orders are found, respond with a message
-        if (!orders.length) {
-            return res.status(200).json({ 
-                message: "No orders found.", 
-                count: 0 
+//         // If no orders are found, respond with a message
+//         if (!orders.length) {
+//             return res.status(200).json({ 
+//                 message: "No orders found.", 
+//                 count: 0 
+//             });
+//         }
+
+//         // Return orders with a success message and count
+//         res.status(200).json({
+//             message: "Orders retrieved successfully.",
+//             count: orders.length,
+//             orders
+//         });
+//     } catch (error) {
+//         console.error("Get all orders error:", error);
+
+//         res.status(500).json({ 
+//             message: "An error occurred while retrieving orders.", 
+//             error: error.message 
+//         });
+//     }
+// };
+
+exports.getUserOrders = async (req, res) => {
+    try {
+        // Ensure req.user is defined
+        if (!req.user) {
+            return res.status(401).render('error', {
+                message: 'User not authenticated',
+                error: 'Please log in to view your orders.'
             });
         }
 
-        // Return orders with a success message and count
-        res.status(200).json({
-            message: "Orders retrieved successfully.",
-            count: orders.length,
-            orders
+        const userId = req.user._id;
+
+        // Fetch all orders for the logged-in user
+        const orders = await Order.find({ user: userId })
+            .populate({
+                path: 'products.product',
+                select: 'name price'
+            })
+            .sort({ createdAt: -1 }) // Use 'createdAt' if 'placedAt' doesn't exist
+            .lean();
+
+        // If no orders are found
+        if (!orders.length) {
+            return res.render('orderHistory', {
+                orders: [],
+                user: req.user,
+                title: 'Order History',
+                message: 'You have no orders.'
+            });
+        }
+
+        // Render the template with orders
+        res.render('orderHistory', {
+            orders,
+            user: req.user,
+            title: 'Order History'
         });
     } catch (error) {
-        console.error("Get all orders error:", error);
+        console.error("Get user orders error:", error.stack);
 
-        res.status(500).json({ 
-            message: "An error occurred while retrieving orders.", 
-            error: error.message 
+        res.status(500).render('error', {
+            message: "An error occurred while retrieving your orders.",
+            error: error.message
         });
     }
 };

@@ -7,10 +7,14 @@
             <% if(user && user.isAdmin){ %>
                 <li><a href="dashboard">Dashboard</a></li>
             <% } %>
+
+            <% if(user && !user.isAdmin){ %>
+                <li><a href="/order/orderHistory">Order History</a></li>
+            <% } %>
             
             <li><a href="about">About</a></li>
             <li><a href="contact">Contact</a></li>
-            <li><a href="/views/product.ejs">Shop</a></li>
+            <li><a href="product-catalog">Shop</a></li>
             
             <% if(user){ %>
                 <li><a id="logout-btn" href="#">Log Out</a></li>
