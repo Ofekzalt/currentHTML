@@ -46,6 +46,7 @@ app.use(optionalAuth);
 // Make user data available to all EJS templates
 app.use((req, res, next) => {
   res.locals.user = req.user || null;
+  res.locals.WEATHER_API = process.env.WEATHER_API|| null;
   next();
 });
 

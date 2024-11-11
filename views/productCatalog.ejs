@@ -1,18 +1,63 @@
-<div class="product-box">
-    <div id="product-list">
-        <% if (products && products.length > 0) { %>
-            <% products.forEach(product => { %>
-                <a href="/view-product/<%= product.id %>" class="product-link">
+<link rel="stylesheet" href="/productCatalog.css">
+<section class="product-catalog">
+    <h1>Products Catalog</h1>
+    <p>
+        Our Product Catalog is designed to make your shopping experience both seamless and enjoyable. With intuitive filters, you can easily find exactly what you're looking for, whether by color, gender, or price range. Our products are carefully curated to offer the latest in style and quality, with each product displayed in a sleek, modern layout.
+
+        Whether you're shopping for fashion, tech, or accessories, this catalog will provide you with the tools you need to make an informed decision. Explore, filter, and sort the products to find the best options that suit your preferences. Happy shopping!
+    </p>
+
+    <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search products...">
+        <button id="search-button">Search</button>
+    </div>
+
+    <div class="filters">
+        <div class="filter-group">
+            <select id="color-filter">
+                <option value="" style="color: black;">Select Color</option>
+                <option value="Red" style="background-color: red;">Red</option>
+                <option value="White" style="background-color: white; color: black;">White</option>
+                <option value="Black" style="background-color: black; color: white;">Black</option>
+                <option value="Blue" style="background-color: blue;">Blue</option>
+                <option value="Green" style="background-color: green;">Green</option>
+                <option value="Orange" style="background-color: orange;">Orange</option>
+                <option value="Gray" style="background-color: gray;">Gray</option>
+                <option value="Tie Dye" style="background-color: #ffd700;">Tie Dye</option>
+            </select>
+        </div>
+        <div class="filter-group">
+            <select id="gender-filter">
+                <option value="" style="color: black;">Select Gender</option>
+                <option value="Male" style="color: black;">Male</option>
+                <option value="Female" style="color: black;">Female</option>
+                <option value="Unisex" style="color: black;">Unisex</option>
+            </select>
+        </div>
+
+        <div class="sort-filters" data-sort-order="">
+            <button id="price-sort-asc">Sort Price: Low to High</button>
+            <button id="price-sort-desc">Sort Price: High to Low</button>
+        </div>
+    </div>
+
+    <div class="product-box">
+        <div id="product-list">
+            <% if (products && products.length > 0) { %>
+                <% products.forEach(product => { %>
                     <div class="product" data-gender="<%= product.gender %>" data-color="<%= product.color %>">
                         <img src="<%= product.image %>" alt="<%= product.name %>">
                         <h3><%= product.name %></h3>
                         <p><%= product.caption %></p>
                         <p class="price"><%= product.price %>$</p>
                     </div>
-                </a>
-            <% }); %>
-        <% } else { %>
-            <p>No products available at the moment.</p>
-        <% } %>
+                <% }); %>
+            <% } else { %>
+                <p>No products available at the moment.</p>
+            <% } %>
+        </div>
     </div>
-</div>
+</section>
+<script src="/productCatalog.js"></script>
+<!-- Loading Spinner -->
+<div id="loading-spinner" class="spinner" style="display: none;"></div>

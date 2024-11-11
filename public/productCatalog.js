@@ -1,5 +1,3 @@
-// public/js_frontpage/productCatalog.js
-
 document.addEventListener('DOMContentLoaded', () => {
     const productList = document.getElementById('product-list');
     const genderFilter = document.getElementById('gender-filter');
@@ -9,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search-input');
     const searchButton = document.getElementById('search-button');
     const loadingSpinner = document.getElementById('loading-spinner');
+    
 
     // Store all products for filtering and sorting
     let allProducts = Array.from(document.querySelectorAll('.product'));
